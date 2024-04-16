@@ -1,1 +1,16 @@
+version: 2.1
 
+jobs: 
+  fastlane_test:
+    macos:
+      xcode: 15.3.0
+    resource_class: macos.m1.medium.gen1
+    steps:
+      - checkout
+      - run: bundle install
+      - run: fastlane tests
+
+workflows:
+  fastlane_test:
+    jobs:
+      - fastlane_test
